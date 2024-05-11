@@ -1,0 +1,132 @@
+#s3 .box{
+    display: grid;
+    grid-template: repeat(6, 50px) / repeat(4, 50px);
+}
+
+#s3 .box input[type=text]{
+    grid-area:1/1/2/5;
+}
+
+#s4 .box{
+    height: 300px;
+    background-color: gray;
+
+    /* item layout */
+    display: flex;
+}
+
+#s4 .box .tool-box{
+    width: 300px;
+    padding: 30px;
+
+}
+
+#s4 .box .preview-box{
+    flex-grow: 1;
+    border-left: 1px solid white;
+    /* 아이템 레이아웃 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#s4 .box .preview-box .item{
+    box-sizing: border-box;
+    width: 200px;
+    height: 100px;
+    border: 1px solid #000;
+    background-color: #00000077;
+}
+
+#s5 .box{
+    height: 300px;
+    background-color: grey;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+#s5 .box ul{
+/* 리셋 */
+    padding: 0;
+    margin: 0;
+
+    /* 레이아웃 */
+    width: 400px;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+
+    position: relative;
+    
+}
+
+#s5 .box li:nth-child(1){
+    left: 0px;
+    
+}
+
+#s5 .box li:nth-child(2){
+    left:calc((100% - 100px)/2);
+    width: 120px;
+    height: 180px;
+}
+
+#s5 .box li:nth-child(3){
+    left:calc(100% - 100px);
+}
+
+
+
+#s5 .box li{
+    /* 리셋 */
+    list-style: none;
+
+    /* text */
+    font-weight: bold;
+    font-size: 36px;
+    color: #fff;
+
+    /* 레이아웃 */
+    position: absolute;
+    width: 100px;
+    height: 150px;
+    border: 3px solid #fff;
+    border-radius: 10px;
+    box-sizing: border-box;
+
+    /* 아이템 레이아웃 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+#st .btn-list{
+    position: absolute;
+    bottom: 0;
+}
+
+#test .box{
+    height: 300px;
+    background-color: gray;
+
+    display: flex;
+    /* 가로 */
+    justify-content: center; 
+    /* 세로 */
+    align-items: center;
+    position: relative;
+}
+
+#test .box .item{
+
+    position: absolute;
+    left:0px;
+
+    width: 100px;
+    height: 100px;
+    background-color: burlywood;
+}

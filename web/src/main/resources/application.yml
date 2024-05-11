@@ -1,0 +1,11 @@
+#공통은 여기로 둔다.
+
+
+spring:
+  profiles:
+    active: dev
+
+
+
+
+        

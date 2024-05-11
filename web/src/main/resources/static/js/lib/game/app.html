@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="module" src="app.js" defer></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/newtil-css@0.1.49/dist/style.css" />
+</head>
+<body>
+    <section id="game-section">
+        <h1 class="d:none"></h1>
+        <div>
+            <canvas class="room" width="700" height="500"></canvas>
+            <!-- 이미지가 없으면 안나옴. 있어야 함.
+            왜 WHY? 룸 객체를 만드는데 그 만드는 시간보다
+            룸에 있는 draw함수를 호출하는게 더 빠르면 draw 하려고 해도
+            이미지 소스를 불러오는게 없는거죠. 그래서 img 소스를 미리 불러다
+            놓는다 그래서 중복되는 img를 객체 생성할 때 이미지 소스를 불러오는
+            과정을 단축 시킨다. -->
+            <img id="map" class="d:none" src="./res/map.png" alt=""> 
+            <img id="boy" class="d:none" src="./res/boy.png" alt="">
+            
+
+
+        
+        </div>
+    </section>
+    
+</body>
+</html>

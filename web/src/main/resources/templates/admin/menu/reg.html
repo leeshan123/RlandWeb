@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en"
+xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="inc/layout"
+>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="/js/admin/menu/reg.js"></script>
+    <style>
+        .n-container {
+            --container-max-width: 900px; 
+    }
+
+    /* 뉴틸 없애면 됨 */
+    input:invalid{
+      background-color: red;
+    }
+
+    .n-form>div::after{
+      content: "음오아예";
+      display: inline-block;
+      width: 50px;
+      height: 50px;
+      opacity: 0;
+
+      transition: opacity 1s;
+    }
+
+    .n-form>div:has(input:invalid)::after{
+      opacity: 1;
+      /* background-color: yellow; */
+    }
+
+    /* 안에서만 쓱 가는게 보이게 하고싶어서 */
+    .preview-panel{
+      overflow: hidden;
+    }
+
+
+    .preview-panel img{
+      /* width: 100px; */
+      height: 100px;
+      /* opacity: 0;
+      transition: opacity 1s, transform 1s ease; */
+      left:-200px;
+      transform: translateX(-200px);
+      transition: transform 1s;
+    }
+
+    .preview-panel img.fade-in{
+      opacity: 1;
+      /* transform: rotate(360deg); */
+    }
+    
+    .preview-panel img.silde-in{
+      transform: translateX(0px);
+    }
+
+    .img-label.valid {
+      background-color: greenyellow;
+    }
+
+    .img-label.invalid{
+      background-color: red;
+    }
+
+    .img-label.invaild::after {
+      content: "파일 형식이 아닙니다.";
+      display: inline-block;
+    }
+
+
+    </style>
+</head>
+<body>
+    <main layout:fragment="main" class="n-container mx:auto">    
+        <header class="d:flex ai:center">
+            <h1 class="n-font n-font:heading-3 fw:3 deco deco-size:3">메뉴 목록</h1>
+            <div><button class="n-btn n-btn-type:filled">추가</button></div>
+        </header>
+        <section id="reg-form">
+            <h1 class="d-none">메뉴 등록 폼</h1>
+            <form action="reg" method="post" enctype="multipart/form-data"
+            class="n-form md:n-field-label-position:left">
+                <div>
+                  <label>
+                    <span>한글명</span>
+                    <input type="text" 
+                    name="korName" 
+                    autofocus
+                    autocomplete="off" 
+                    list="menu-list"
+                    required minlength="3" 
+                    placeholder="한글명"/>
+                    <datalist id="menu-list" class="">
+                      <option>아메리카노</option>
+                      <option>카페라뗴</option>
+                      <option>딸기라뗴</option>
+                      <option>카페모카</option>
+
+                    </datalist>
+
+                  </label>
+                </div>
+                <div>
+                  <label>
+                    <span>영문명</span>
+                    <input type="text" name="engName" placeholder="영어명"/>
+                  </label>
+                </div>
+                <div>
+                  <label class="img-label">
+                    <span>이미지</span>
+                    <!-- 멀티플하면 여러개 가능 -->
+                    <input class="img-input" multiple type="file" name="img-file" />
+                  </label>
+                </div>
+                <div class="preview-panel">
+                  
+
+                </div>
+                <div>
+                  <label>
+                    <span>가격</span>
+                    <input type="number" required min="0" name="price" placeholder="가격"/>
+                  </label>
+                </div>
+                <div>
+                  <button class="btn">등록</button>
+                </div>
+              </form>
+        </section>
+    </main>
+</body>
+</html>

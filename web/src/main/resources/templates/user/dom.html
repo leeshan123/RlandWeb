@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="dom.js"></script>
+    <script>
+        // var a = 3+'a';
+        // console.log(a);
+        // var a = 3-'a';
+        // console.log(a);
+        // if(isNaN(a))
+        // console.log("맛있겠다");
+
+
+        var st1 = "var x = 30;"
+        eval(st1);
+        console.log(x); //30
+
+        //오류 :를 모르겠다고 뜸.
+        // var st2 = '{id:2, title:"hello"}';
+        // var notice = eval(st2);
+        // console.log(id); 
+
+        //가능
+        var st3 = '[23,"hello"]';
+        var notice = eval(st3);
+        console.log(notice[1]); //hello
+
+
+        var st2 = '({id:2, title:"hello"})';
+        var notice = eval(st2);
+        console.log(notice.title); //hello
+        console.log(notice.id); //2
+        console.log(notice[1]); //undefined
+
+        var st4 = '{"id":2, "title":"hello"}';
+        var notice = JSON.parse(st4);
+        console.log(notice.title);
+        console.log(notice.id);
+
+        var n ={"id":2, "title":"hello"};
+        var json = JSON.stringify(n);
+        console.log(json);
+
+        console.log(false || 'Cat');
+        console.log('Cat' || false );
+        console.log('' || false);
+        console.log(false || '');
+        // console.log(false || varObject);
+
+        var x = null;
+        var y = null;
+        var z = 50;
+
+        var result = x||z||y
+        console.log(result)
+
+        //||는 true를 찾음. 기본값을 대입하기 좋다. 
+        // var kor = prompt("국어성적을 입력하세요");
+        var result = null || 0;
+        // result = result + 2;
+        console.log(result);
+
+        //&&는 false를 찾음.
+
+        //연산자 우선순위는 ||보다 &&이 높음 따라서 true
+        console.log(true||false&&false);
+
+        var foo = 0 ?? 'default string';
+        console.log(foo);
+
+        console.log(" ");
+        console.log("--------------------3.19");
+        console.log(" ");
+
+        var add = new Function("x,y","return x+y");
+        console.log(add(3,4)); //7
+        console.log(add(3,4,5,6,7)); //7
+        console.log(add(3)); //NaN
+
+        function add(){
+            var x = arguments[0];
+            var y = arguments[1];
+            return x+y;
+        }
+        console.log(add(3,4)); //7
+        console.log(add(3,4,5,6,7)); //7
+        console.log(add(3));
+
+        // var a = 2;
+        // alert(window.a);
+        console.log(window.a)
+
+        var f1 = function(){
+            a = 2;
+            var a = 1;
+            console.log(window.a); // 예상:2 결과:NaN
+            console.log(a); //예상:1 결과:1
+        }
+
+        f1();
+
+        var f3;
+        var fx = 100;
+
+        var f1 = function(){
+            var fx = 4000;
+
+            f3 = function(){
+                console.log(fx);
+                console.log(window.fx);
+
+            }
+        }
+
+        f1(); //예상: 아무것도 안나옴
+        f3(); //예상: 10,10 -> 4000,100
+
+        function print(){
+
+        }
+
+        function Exam(){
+            var kor=1;
+            window.kor = 2;
+            this.kor=3;
+
+            console.log(kor,window.kor,this.kor);
+        }
+
+        Exam(); //1 3 3
+        new Exam(); //1 2 3
+
+        function Ex(){
+            this.kor = 20;
+            this.eng = 30;
+            this.math = 40;
+
+            this.total = function(){
+                return this.kor+this.eng+this.math;
+            }
+
+            this.avg = function(){
+                return this.total()/3;
+            }
+
+        }
+        var ex1 = new Ex();
+        console.log(ex1.kor); //20
+        console.log(ex1.eng+ex1.kor+ex1.math); //90
+        console.log(ex1.total()); //90
+        console.log("avg:",ex1.avg()); //30
+
+        Array.prototype.a = function(){
+            console.log("ㅎㅎg");
+        };
+        var ar = [1,2,3,4,5];
+        ar.a();
+
+        function Exam(){
+            this.kor = 20;
+            this.eng = 30;
+            this.math = 40;
+        }
+
+            //기존에 속성추가
+            Exam.prototype.total = function(){
+                return this.kor+this.eng+this.math;
+            }
+            
+            Exam.prototype.avg = function(){
+                return this.total()/3;
+            }
+
+            //기존에 객체를 바꿔버림
+            Exam.prototype = {
+                //누구를 통한 Constructor인지를 알려줘야함.
+                constructor:Exam,
+                total:function(){
+                    return this.kor+this.eng+this.math;
+                },
+                avg:function(){
+                    return this.total()/3;
+                }
+            }
+            
+        
+
+        var exam1 = new Exam();
+        var exam2 = new Exam();
+        var exam3 = new Exam();
+
+        console.log("Exam.prototype: ", Exam.prototype)
+        console.log("exam1.prototype: ", exam1.constructor.prototype);
+        console.log("exam1.__proto__:", exam1.__proto__);
+
+        
+
+        
+        console.log(exam1.kor+exam1.eng+exam1.math);
+        console.log("total: ",exam1.total());
+        console.log("avg: ",exam1.avg());
+
+        console.log("")
+
+
+        function NewExam(){
+            this.com = 60;
+        }
+
+        NewExam.prototype = new Exam();
+
+        var exam4 = new NewExam();
+
+        console.log(exam4.kor);
+        console.log(exam4.__proto__.__proto__);
+
+        Array.prototype.ahaha = function(){
+            console.log("오호호 얏호~");
+        }
+
+        var ar = [1,2,3,4,5];
+        ar.ahaha();
+
+        ar.forEach(n => console.log(n));
+
+    
+
+    </script>
+</head>
+<body>
+    <input type="button" value="출력" id = "btnPrint" />
+    <div onclick="alert('클릭했구나 땡큐');">여기 한 번 클릭해봐</div>
+
+</body>
+</html>

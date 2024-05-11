@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 
+    defer 속성을 사용하면 브라우저는 스크립트를 다운로드하고 실행을 지연시키지만, 
+    HTML 문서의 파싱은 계속 진행됩니다.
+    따라서 스크립트가 문서의 DOM을 조작하거나 다른 스크립트 파일을 로드할 때까지
+    기다린 후 실행됩니다. -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script type="text/babel" src="react.js" defer></script>
+<!-- 이제부터 모듈을 못씀 -->
+</head>
+
+<body>
+    <div id="root"></div>
+
+    
+</body>
+
+</html>

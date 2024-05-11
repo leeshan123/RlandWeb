@@ -1,0 +1,20 @@
+{
+  "name": "rland",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./index.js",
+    "stop": "echo \"Error: no test specified\" && exit 1",
+    "restart": "echo \"Error: no test specified\" && exit 1",
+    "abcdefg": "node ./aaa.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "connect": "^3.7.0",
+    "ejs": "^3.1.10",
+    "express": "^4.19.2"
+  }
+}

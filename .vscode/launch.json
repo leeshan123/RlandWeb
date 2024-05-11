@@ -1,0 +1,24 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-WebApplication<web>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "kr.co.rland.web.WebApplication",
+            "projectName": "web",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-RlandBuildApplication<rland_build>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "kr.co.rland_build.rland_build.RlandBuildApplication",
+            "projectName": "rland_build",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
